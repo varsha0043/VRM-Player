@@ -1,0 +1,518 @@
+/* General Body Styles */
+body {
+  margin: 0;
+  padding: 0;
+  background: url("./musi9.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* .first Section */
+.first {
+  margin: 0 auto;
+  left: -100px;
+  height: 70vh;
+  width: 100vh;
+  margin-top: -4%;
+  text-align: center;
+  color: white;
+  background: url(Bzlf.gif);
+  position: relative;
+}
+
+/* .second Section */
+.second {
+  display: inline-block;
+  position: relative;
+  margin-top: 30px;
+}
+
+.second img {
+  height: 220px;
+  width: 215px;
+  margin-top: 40px;
+  border-radius: 50%;
+  transition: transform 0.5s, box-shadow 0.5s;
+}
+
+.rotate {
+  animation: rotate 3s linear infinite;
+}
+
+.shadow {
+  box-shadow: 0px 0px 15px rgba(100, 136, 215, 0.5);
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.music-header{
+
+  margin-top: 10px;
+}
+/* Headers and Text */
+h1 {
+  text-align: center;
+  font-size: 40px;
+}
+
+p {
+  font-size: 20px;
+
+}
+
+/* Music Buttons */
+.music-buttons {
+  margin-top: 10px;
+}
+
+.music-buttons button {
+  font-size: 50px;
+  margin: 35px;
+  background: transparent;
+  color: white;
+  border: none;
+  position: relative;
+}
+
+.music-buttons button:hover {
+  color: rgb(222, 105, 237);
+  cursor: pointer;
+}
+
+
+
+.bxs--skip-previous-circle {
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10s10-4.486 10-10S17.515 2 12 2m4 14l-6-4v4H8V8h2v4l6-4z'/%3E%3C/svg%3E");
+  background-color: currentColor;
+  -webkit-mask-image: var(--svg);
+  mask-image: var(--svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.zondicons--pause-solid {
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%23000' d='M2.93 17.07A10 10 0 1 1 17.07 2.93A10 10 0 0 1 2.93 17.07M7 6v8h2V6zm4 0v8h2V6z'/%3E%3C/svg%3E");
+  background-color: currentColor;
+  -webkit-mask-image: var(--svg);
+  mask-image: var(--svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.carbon--play-filled {
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='none' d='M11 23a1 1 0 0 1-1-1V10a1 1 0 0 1 1.447-.894l12 6a1 1 0 0 1 0 1.788l-12 6A1 1 0 0 1 11 23'/%3E%3Cpath fill='%23000' d='M16 2a14 14 0 1 0 14 14A14 14 0 0 0 16 2m7.447 14.895l-12 6A1 1 0 0 1 10 22V10a1 1 0 0 1 1.447-.894l12 6a1 1 0 0 1 0 1.788'/%3E%3C/svg%3E");
+  background-color: currentColor;
+  -webkit-mask-image: var(--svg);
+  mask-image: var(--svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.bxs--skip-next-circle {
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10s10-4.486 10-10S17.514 2 12 2m4 14h-2v-4l-6 4V8l6 4V8h2z'/%3E%3C/svg%3E");
+  background-color: currentColor;
+  -webkit-mask-image: var(--svg);
+  mask-image: var(--svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+
+/* Logo Image */
+.logo img {
+  margin: 20px;
+}
+
+/* Progress Bar */
+.progress {
+  margin-top: 5px;
+  padding: 0px;
+  display: flex;
+  margin-left: 100px;
+  align-items: center;
+}
+
+.progress input[type="range"] {
+  -webkit-appearance: none;
+  width: 35em;
+  background: transparent;
+}
+
+.progress input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  background: white;
+  border-radius: 5px;
+}
+
+.progress input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: rgb(179, 5, 219);
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -6px;
+}
+
+/* Song List */
+.SongList {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 55em;
+  top: 15%;
+  width: 65%;
+  height: 89%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.songitem {
+  height: 45px;
+  display: flex;
+  background-color: white;
+  width: 75%;
+  color: black;
+  margin: 5px 0;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 34px;
+  background: transparent;
+  backdrop-filter: blur(5px);
+  box-shadow: 10px 5px 5px rgb(53, 53, 54);
+  border: 2px solid rgb(135, 129, 129);
+  cursor: pointer;
+}
+.songitem:hover{
+
+  background: rgb(236, 66, 236);
+  color: black;
+  padding: 3px;
+}
+
+.songitem img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgb(135, 129, 129);
+  margin: 10px;
+  margin-left: 2px;
+}
+
+.songitem.active {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgb(255, 105, 180);
+}
+
+.pepicons-pop--shuffle-circle-filled {
+  display: inline-block;
+  width: 1em;
+  height: 1.2em;
+  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'%3E%3Cg fill='none'%3E%3Cdefs%3E%3Cmask id='pepiconsPopShuffleCircleFilled0'%3E%3Cpath fill='%23fff' d='M0 0h26v26H0z'/%3E%3Cg fill='%23000' fill-rule='evenodd' clip-rule='evenodd'%3E%3Cpath d='M6 8.75a1 1 0 0 1 1-1c3.335 0 6.5 2.126 6.5 5.25s-3.165 5.25-6.5 5.25a1 1 0 1 1 0-2c2.74 0 4.5-1.68 4.5-3.25S9.74 9.75 7 9.75a1 1 0 0 1-1-1'/%3E%3Cpath d='M19 8.75a1 1 0 0 0-1-1c-3.335 0-6.5 2.126-6.5 5.25s3.165 5.25 6.5 5.25a1 1 0 1 0 0-2c-2.74 0-4.5-1.68-4.5-3.25s1.76-3.25 4.5-3.25a1 1 0 0 0 1-1'/%3E%3Cpath d='M19.46 17.778a.75.75 0 0 1-1.053-.133l-1.5-1.936a.75.75 0 0 1 1.186-.918l1.5 1.935a.75.75 0 0 1-.134 1.052'/%3E%3Cpath d='M17.05 19.786a.75.75 0 0 1-.15-1.05l1.5-2a.75.75 0 1 1 1.2.9l-1.5 2a.75.75 0 0 1-1.05.15m2.41-11.564a.75.75 0 0 0-1.053.133l-1.5 1.936a.75.75 0 0 0 1.186.918l1.5-1.935a.75.75 0 0 0-.134-1.052'/%3E%3Cpath d='M17.05 6.15a.75.75 0 0 0-.15 1.05l1.5 2a.75.75 0 1 0 1.2-.9l-1.5-2a.75.75 0 0 0-1.05-.15'/%3E%3C/g%3E%3C/mask%3E%3C/defs%3E%3Ccircle cx='13' cy='13' r='13' fill='%23000' mask='url(%23pepiconsPopShuffleCircleFilled0)'/%3E%3C/g%3E%3C/svg%3E");
+  background-color: currentColor;
+  -webkit-mask-image: var(--svg);
+  mask-image: var(--svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+.shufflebutton {
+  position: absolute;
+  height: 10px;
+  right: 80px;
+  margin: 8px;
+}
+
+/* Timestamps */
+.timestamp {
+  font-size: 15px;
+  color: bisque;
+  margin-right: 20px;
+}
+
+/* Song Header */
+.song-header {
+  display: inline-block;
+  position: absolute;
+  right: -20px;
+  top: 50px;
+}
+
+/* Song Name */
+.songname {
+  display: flex;
+  flex-direction: row;
+  color: white;
+}
+
+.songname:hover{
+
+  color: black;
+}
+
+/* Play Button */
+.play-button {
+  display: inline-block;
+  width: 3em;
+  height: 3em;
+  background: rgb(0, 150, 136);
+  border-radius: 50%;
+  color: white;
+  text-align: center;
+  line-height: 3em;
+  font-size: 1.5em;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s, transform 0.3s;
+}
+
+.play-button:hover {
+  background: rgb(0, 120, 100);
+  transform: scale(1.1);
+}
+
+/* Volume Control */
+.volume-control {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.volume-control input[type="range"] {
+  -webkit-appearance: none;
+  width: 150px;
+  background: transparent;
+}
+
+.volume-control input[type="range"]::-webkit-slider-runnable-track {
+  height: 5px;
+  background: #888;
+  border-radius: 5px;
+}
+
+.volume-control input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #666;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Player Controls */
+.player-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.player-controls button {
+  background: #333;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin: 0 5px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.player-controls button:hover {
+  background: #555;
+}
+
+/* Progress Bar */
+.progress-bar {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+
+}
+
+.time-info{
+
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 20px;
+
+}
+
+.time-info input{
+
+  width: 100%;
+}
+
+.progress-bar input[type="range"] { 
+  -webkit-appearance: none;
+  width: 80%;
+  height: 8px;
+  background: #ea0505;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.progress-bar input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #ff5722;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* General Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.p-10 {
+  padding: 10px;
+}
+
+#shuffleBtn.active {
+  color: blue; /* Or any active state styling */
+}
+
+@media (max-width:400px) {
+
+  body{
+
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .logo{
+
+    display: none;
+  }
+  .first{
+
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  h1{
+
+    padding: 0;
+    margin: 0;
+    font-size: 25px;
+  }
+
+  p{
+
+    width: 100%;
+    font-size: 15px;
+  }
+
+  .SongList{
+
+    display: none;
+  }
+
+  h2{
+
+    display: none;
+  }
+
+  .music-header{
+    width: 100%;
+
+    justify-content: center;
+    padding: 0;
+    margin: 20ppx;
+
+  }
+
+  .second{
+    position: relative;
+
+    display: block;
+    width: 100%;
+
+
+  }
+  .second img{
+
+    width: 150px;
+    height: 150px;
+  }
+
+  .music-buttons{
+    position: relative;
+
+    width: 90%;
+    margin-left: 20px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .music-buttons button{
+
+
+    font-size: 35px;
+    margin: 10px;
+  }
+
+  h3{
+
+    font-size: 15px;
+  }
+
+  .time-info{
+    width: 100%;
+  }
+
+  .time-info input{
+
+    width: 60%;
+    margin: 0px 20px;
+    padding: 0;
+    display: block;
+  }
+}

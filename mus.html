@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Song Player</title>
+    <link rel="stylesheet" href="musi.css">
+</head>
+<body>
+    <div class="logo">
+        <img src="mumu.png" alt="logo" width="150" height="150">
+    </div>
+    <div class="first">
+        <div class="music-header">
+            <h1>VRM Player</h1>
+            <p>Some songs for you that will melt your heart</p>
+        </div>
+        <div class="song-header">
+            <h2>Songs</h2>
+        </div>
+
+        <div class="SongList" id="songList">
+            <!-- Song items will be inserted here by JavaScript -->
+        </div>
+
+        <div class="second">
+            <img src="./inn3.jpg" alt="img" id="albumArt">
+            <div class="music-buttons">
+                <button id="prevBtn"><span class="bxs--skip-previous-circle"></span></button>
+                <button id="playPauseBtn"><span class="carbon--play-filled"></span></button>
+                <button id="nextBtn"><span class="bxs--skip-next-circle"></span></button>
+                <button id="shuffleBtn"><span class="pepicons-pop--shuffle-circle-filled"></span></button>
+            </div>
+            <div class="song-name">
+                <h3 id="songTitle">Song Title</h3>
+            </div>
+            <div class="time-info">
+                <span id="currentTime">00:00</span>
+                <input type="range" id="progressBar" name="range" min="0" max="100" value="0">
+                <span id="duration">00:00</span>
+            </div>
+        </div>
+    </div>
+
+    <audio id="audio"></audio>
+
+    <script>
+        const songs = [
+            "./Playlists/01 Cheez Badi - Machine - 190Kbps.mp3",
+            "./Playlists/01 Baarish - Half Girlfriend (Ash King) 190Kbps.mp3",
+            "./Playlists/01 Kar Gayi Chull - Badshah 190Kbps.mp3",
+            "./playlists/01 Sanam Re (Title Song) Arijit Singh 190Kbps.mp3",
+            "./playlists/01 Kala Chashma - Baar Baar Dekho (Badshah) 190Kbps.mp3",
+            "./playlists/01 Khali Khali Dil (Armaan Malik) 320Kbps.mp3",
+            "./playlists/01 Kudiya Shehar Di - Poster Boys (Daler) 190Kbps.mp3",
+            "./playlists/01 Luv Letter (Kanika Kapoor n Meet Bros) 190Kbps.mp3",
+            "./playlists/01 Maana Ke Hum Yaar Nahi (Parineeti) 190Kbps.mp3",
+            "./playlists/01 Mere Rashke Qamar - Baadshaho 190Kbps.mp3",
+            "./playlists/01 Nachange Saari Raat - Junooniyat (Meet Bros) 190Kbps.mp3",
+            "./playlists/01 Paani Paani - Cabaret (Sunidhi Chauhan) 190Kbps.mp3",
+            "./playlists/01 Pyaar Ki - Housefull 3 (Sharib n Toshi) 190Kbps.mp3",
+            "./playlists/01 Sau Tarah Ke - Dishoom (Pritam) 190Kbps.mp3",
+            "./playlists/01 Soch Na Sake - Version 1 Airlift (Arijit Singh) 190Kbps.mp3",
+            "./playlists/01 Suit Suit - Hindi Medium (Guru n Arjun) 190Kbps.mp3",
+            "./playlists/01 Swag Se Swagat - Tiger Zinda Hai 190Kbps.mp3",
+            "./playlists/01 Tere Sang Yaara - Rustom - Atif Aslam - 190Kbps.mp3",
+            "./playlists/01 Wajah Tum Ho (Title Song) Mithoon - 190Kbps.mp3",
+            "./playlists/02 Bolna - Arijit Singh 190Kbps.mp3",
+            "./playlists/02 Channa Mereya (Unplugged) Arijit Singh - 190Kbps.mp3",
+            "./playlists/02 Dil Diyan Gallan - Tiger Zinda Hai (Atif) 190Kbps.mp3",
+            "./playlists/02 Hue Bechain (Palak Muchhal) 190Kbps.mp3",
+            "./playlists/02 Kaun Tujhe (MS Dhoni) Palak 190Kbps.mp3",
+            "./Playlists/02 Hue Bechain (Palak Muchhal) 190Kbps.mp3",
+            "./Playlists/02 Ijazat - One Night Stand (Arijit Singh) 190Kbps.mp3",
+            "./Playlists/02 Lets Talk About Love - Baaghi (Raftaar) 190Kbps.mp3",
+            "./Playlists/02 Lo Maan Liya - Raaz Reboot (Arijit Singh) 190Kbps.mp3",
+            "./Playlists/02 Meherbaan (PagalWorld.com) 190Kbps.mp3",
+            "./Playlists/02 Nasshhe Si Chdh Gyi (Arijit Singh) 190Kbps.mp3",
+            "./Playlists/02 O Janiya - Force 2 (Neha Kakkar) 190Kbps.mp3",
+            "./Playlists/02 Raabta - Title Song (Arijit Singh) 190Kbps.mp3",
+            "./Playlists/02 Rehnuma - Rocky Handsome (Shreya Ghoshal) 190Kbps.mp3",
+            "./Playlists/02 Tere Naina Maar Hi Daalenge - Jai Ho [PagalWorld.com].mp3",
+            "./Playlists/02 The Humma Song - OK Jaanu 190Kbps.mp3",
+            "./Playlists/02 Toota Jo Kabhi Tara - Flying Jatt  (Atif Aslam) 190Kbps.mp3",
+            "./Playlists/02 Tu Zaroori - 190kbps.mp3",
+            "./Playlists/02 Zaalima - Raees (Arijit Singh) 190kbps.mp3",
+            "./Playlists/03 Chhote Chhote Peg - Yo Yo Honey Singh 190Kbps.mp3",
+            "./Playlists/03 Dil Mein Chhupa Loonga (Wajah Tum Ho) 190Kbps.mp3",
+            "./Playlists/03 Hasi - Hamari Adhuri Kahani (SongsMp3.Com).mp3",
+            "./Playlists/03 I Wanna Tera Ishq - Great Grand Masti - 190Kbps.mp3",
+            "./Playlists/03 Intezaar Title Song (Shreya Ghoshal) 190Kbps.mp3",
+            "./Playlists/03 Ishq Da Sutta - One Night Stand (Jasmine Sandlas) 190Kbps.mp3",
+            "./Playlists/03 Nachan Farrate (All Is Well) Kanika Kapoor 190Kbps.mp3",
+            "./Playlists/03 Pyar Ho - Munna Michael (Sunidhi) 190Kbps.mp3",
+            "./Playlists/03 Saiyaan Superstar (Ek Paheli Leela) 190Kbps (Tulsi Kumar).mp3",
+            "./Playlists/03 Sau Aasmaan - Baar Baar Dekho (Armaan Malik) 190Kbps.mp3",
+            "./Playlists/03 Thodi Der - Half Girlfriend (Farhan Saeed) 320Kbps.mp3",
+            "./Playlists/03 Tum Mere Ho - Hate Story 4 - 190Kbps.mp3.mp3",
+        ];
+
+        let currentSongIndex = 0;
+        let isShuffle = false;
+        let shuffledSongs = [...songs];
+        const audio = document.getElementById("audio");
+        const playPauseBtn = document.getElementById("playPauseBtn");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const progressBar = document.getElementById("progressBar");
+        const songTitle = document.getElementById("songTitle");
+        const currentTime = document.getElementById("currentTime");
+        const duration = document.getElementById("duration");
+        const albumArt = document.getElementById("albumArt");
+        const shuffleBtn = document.getElementById("shuffleBtn");
+
+        const playIcon = '<span class="carbon--play-filled"></span>';
+        const pauseIcon = '<span class="zondicons--pause-solid"></span>';
+        const activeShuffleClass = 'active';
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function loadSong(index) {
+            audio.src = isShuffle ? shuffledSongs[index] : songs[index];
+            audio.load();
+            songTitle.textContent = (isShuffle ? shuffledSongs[index] : songs[index]).split('/').pop().replace(/\.mp3$/, '').replace(/_/g, ' ');
+            updateProgressBar();
+        }
+
+        function playSong() {
+            audio.play();
+            playPauseBtn.innerHTML = pauseIcon;
+        }
+
+        function pauseSong() {
+            audio.pause();
+            playPauseBtn.innerHTML = playIcon;
+        }
+
+        function updateProgressBar() {
+            if (audio.duration) {
+                const progress = (audio.currentTime / audio.duration) * 100;
+                progressBar.value = progress;
+                currentTime.textContent = formatTime(audio.currentTime);
+                duration.textContent = formatTime(audio.duration);
+            }
+        }
+
+        function setAudioTime() {
+            const time = (progressBar.value / 100) * audio.duration;
+            audio.currentTime = time;
+        }
+
+        function populateSongList() {
+            const songList = document.getElementById("songList");
+            songs.forEach((song, index) => {
+                const songItem = document.createElement("div");
+                songItem.classList.add("songitem");
+
+                const songName = document.createElement("div");
+                songName.classList.add("songname");
+                
+                const songCover = document.createElement("img");
+                songCover.src = "gc.jpeg";
+                songCover.alt = "cover";
+                songName.appendChild(songCover);
+
+                const songTitle = document.createElement("h5");
+                songTitle.textContent = song.split('/').pop().replace(/\.mp3$/, '').replace(/_/g, ' ');
+                songName.appendChild(songTitle);
+
+                const songPlay = document.createElement("span");
+                songPlay.classList.add("songlistplay");
+                const timestamp = document.createElement("span");
+                timestamp.classList.add("timestamp");
+                songPlay.appendChild(timestamp);
+
+                songItem.appendChild(songName);
+                songItem.appendChild(songPlay);
+
+                songItem.addEventListener("click", () => {
+                    currentSongIndex = index;
+                    loadSong(currentSongIndex);
+                    playSong();
+                });
+
+                songList.appendChild(songItem);
+            });
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+            }
+            return array;
+        }
+
+        function toggleShuffle() {
+            isShuffle = !isShuffle;
+            shuffleBtn.classList.toggle(activeShuffleClass, isShuffle);
+            if (isShuffle) {
+                shuffledSongs = shuffleArray([...songs]);
+            } else {
+                shuffledSongs = [...songs];
+            }
+            loadSong(currentSongIndex); // Load the song based on the shuffled state
+        }
+
+        function playNextSong() {
+            if (isShuffle) {
+                currentSongIndex = (currentSongIndex + 1) % shuffledSongs.length;
+            } else {
+                currentSongIndex = (currentSongIndex + 1) % songs.length;
+            }
+            loadSong(currentSongIndex);
+            playSong();
+        }
+
+        function playPrevSong() {
+            if (isShuffle) {
+                currentSongIndex = (currentSongIndex - 1 + shuffledSongs.length) % shuffledSongs.length;
+            } else {
+                currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+            }
+            loadSong(currentSongIndex);
+            playSong();
+        }
+
+        playPauseBtn.addEventListener("click", function() {
+            if (audio.paused) {
+                playSong();
+            } else {
+                pauseSong();
+            }
+        });
+
+        prevBtn.addEventListener("click", playPrevSong);
+        nextBtn.addEventListener("click", playNextSong);
+
+        shuffleBtn.addEventListener("click", toggleShuffle);
+
+        audio.addEventListener("timeupdate", updateProgressBar);
+        progressBar.addEventListener("input", setAudioTime);
+
+        // Initial load
+        loadSong(currentSongIndex);
+        populateSongList();
+    </script>
+</body>
+</html>
