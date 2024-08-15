@@ -24,7 +24,7 @@
         </div>
 
         <div class="second">
-            <img src="./inn3.jpg" alt="img" id="albumArt">
+            <img src="./inn3.jpg" alt="img" id="albumArt" class="rotate">
             <div class="music-buttons">
                 <button id="prevBtn"><span class="bxs--skip-previous-circle"></span></button>
                 <button id="playPauseBtn"><span class="carbon--play-filled"></span></button>
@@ -46,7 +46,7 @@
 
     <script>
         const songs = [
-            "./Playlists/01 Cheez Badi - Machine - 190Kbps.mp3",
+        "./Playlists/01 Cheez Badi - Machine - 190Kbps.mp3",
             "./Playlists/01 Baarish - Half Girlfriend (Ash King) 190Kbps.mp3",
             "./Playlists/01 Kar Gayi Chull - Badshah 190Kbps.mp3",
             "./playlists/01 Sanam Re (Title Song) Arijit Singh 190Kbps.mp3",
@@ -95,8 +95,7 @@
             "./Playlists/03 Saiyaan Superstar (Ek Paheli Leela) 190Kbps (Tulsi Kumar).mp3",
             "./Playlists/03 Sau Aasmaan - Baar Baar Dekho (Armaan Malik) 190Kbps.mp3",
             "./Playlists/03 Thodi Der - Half Girlfriend (Farhan Saeed) 320Kbps.mp3",
-            "./Playlists/03 Tum Mere Ho - Hate Story 4 - 190Kbps.mp3.mp3",
-        ];
+            "./Playlists/03 Tum Mere Ho - Hate Story 4 - 190Kbps.mp3.mp3",        ];
 
         let currentSongIndex = 0;
         let isShuffle = false;
@@ -132,11 +131,13 @@
         function playSong() {
             audio.play();
             playPauseBtn.innerHTML = pauseIcon;
+            albumArt.classList.add("active");
         }
 
         function pauseSong() {
             audio.pause();
             playPauseBtn.innerHTML = playIcon;
+            albumArt.classList.remove("active");
         }
 
         function updateProgressBar() {
@@ -173,9 +174,6 @@
 
                 const songPlay = document.createElement("span");
                 songPlay.classList.add("songlistplay");
-                const timestamp = document.createElement("span");
-                timestamp.classList.add("timestamp");
-                songPlay.appendChild(timestamp);
 
                 songItem.appendChild(songName);
                 songItem.appendChild(songPlay);
@@ -239,7 +237,6 @@
 
         prevBtn.addEventListener("click", playPrevSong);
         nextBtn.addEventListener("click", playNextSong);
-
         shuffleBtn.addEventListener("click", toggleShuffle);
 
         audio.addEventListener("timeupdate", updateProgressBar);
